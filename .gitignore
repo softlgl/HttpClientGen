@@ -1,0 +1,57 @@
+# ===== .NET Core / .NET =====
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# 构建输出
+[Bb]uild/
+[Oo]ut/
+dist/
+artifacts/
+publish/
+*.binlog
+msbuild.log
+
+# HttpClientGen 生成输出（CLI 默认输出目录 Generated/）
+[Gg]enerated/
+generated/
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nupkg.metadata
+*.nuget.props
+*.nuget.targets
+packages/
+!packages/**/build/**/*.targets
+!packages/**/build/**/*.props
+
+# 测试结果
+[Tt]est[Rr]esult*/
+[Bb]uildOutput/
+*.coverage
+*.coveragexml
+*.trx
+*.cache
+
+# IDE 配置（保留共享项，忽略本地项）
+.vs/
+.idea/
+*.DotSettings.user
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+
+# 平台 / 系统
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.pdb
+
+# 日志
+*.log
+logs/
+*.tmp

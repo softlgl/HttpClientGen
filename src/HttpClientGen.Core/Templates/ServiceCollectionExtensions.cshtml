@@ -1,0 +1,25 @@
+using System;
+using System.Net.Http;
+using Microsoft.Extensions.DependencyInjection;
+@foreach (var ns in Model.ModuleUsings)
+{
+@:using @(ns);
+}
+namespace @Model.Catalog.Namespace
+{
+    /// <summary>
+    /// 生成的 HttpClientFactory 注册扩展。调用后即可通过构造函数注入 I&lt;Client&gt; 类型化客户端。
+    /// </summary>
+    public static class ServiceCollectionExtensions
+    {
+        /// <summary>批量注册所有生成的类型化 HttpClient。可传入 baseAddress 覆盖默认地址。</summary>
+        public static IServiceCollection AddGeneratedClients(this IServiceCollection services, Uri? baseAddress = null)
+        {
+@foreach (var c in Model.Catalog.Clients)
+{
+@:            services.@(HttpClientGen.Core.Rendering.CodeHelper.AddClient(c))
+}
+            return services;
+        }
+    }
+}

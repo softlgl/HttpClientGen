@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.6.1" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.6.1" />
+    <!-- 生成代码依赖 AddHttpClient/IServiceCollection 编译 -->
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\HttpClientGen.Core\HttpClientGen.Core.csproj" />
+    <!-- 端到端测试需要 HttpClientGen CLI 已构建（真实进程调用） -->
+    <ProjectReference Include="..\..\src\HttpClientGen\HttpClientGen.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Fixtures\petstore.json" CopyToOutputDirectory="PreserveNewest" />
+    <InternalsVisibleTo Include="HttpClientGen.Core" />
+  </ItemGroup>
+
+</Project>

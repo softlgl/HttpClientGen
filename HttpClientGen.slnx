@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/samples/">
+    <Project Path="samples/MockApi/MockApi.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/HttpClientGen.Core/HttpClientGen.Core.csproj" />
+    <Project Path="src/HttpClientGen/HttpClientGen.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/HttpClientGen.Tests/HttpClientGen.Tests.csproj" />
+  </Folder>
+</Solution>

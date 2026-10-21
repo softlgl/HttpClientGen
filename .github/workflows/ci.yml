@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    name: Build & Test (.NET 10)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+          dotnet-quality: 'preview'
+
+      - name: Restore
+        run: dotnet restore HttpClientGen.slnx
+
+      # 端到端测试会以子进程方式启动 bin/Debug 下的 MockApi.dll 与 HttpClientGen.dll，
+      # 故整条流水线统一使用 Debug 配置，保证产物路径与 RepoLocator 一致。
+      - name: Build
+        run: dotnet build HttpClientGen.slnx -c Debug --no-restore
+
+      - name: Test
+        run: dotnet test tests/HttpClientGen.Tests/HttpClientGen.Tests.csproj -c Debug --no-build
