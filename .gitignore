@@ -40,6 +40,7 @@ packages/
 # IDE 配置（保留共享项，忽略本地项）
 .vs/
 .idea/
+.trae/
 *.DotSettings.user
 .vscode/settings.json
 .vscode/launch.json
